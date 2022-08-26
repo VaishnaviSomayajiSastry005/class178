@@ -1,0 +1,20 @@
+let latitude =12.923875, longitude= 77.553293;
+mapboxgl.accessToken="pk.eyJ1IjoiYXBvb3J2ZWxvdXMiLCJhIjoiY2ttZnlyMDgzMzlwNTJ4a240cmEzcG0xNyJ9.-nSyL0Gy2nifDibXJg4fTA"
+var map=new mapboxgl.Map({
+    container:"map",
+    style:"mapbox://style/mapbox/streets-v11",
+    center:[longitude, latitude],
+    zoom:16
+})
+map.addControl(
+    new mapboxgl.GeolocateControl({
+        positionOptions:{enableHighAccuracy:true},
+        trackUserLocation:true
+    })
+)
+map.addControl(
+    new MapboxDirections({
+        accessToken:mapboxgl.accessToken
+    }),
+    "top-left"
+)
